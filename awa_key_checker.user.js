@@ -1,10 +1,21 @@
+// ==UserScript==
+// @name         AWA Key Checker
+// @version      1.0
+// @description  Checks key availability, level and countries on Alienware Arena
+// @author       Saulios
+// @match        https://*.alienwarearena.com/ucf/show/*/boards/contest-and-giveaways-global/Giveaway/*
+// @icon         https://na.alienwarearena.com/favicon.ico
+// @updateURL    https://github.com/ColinLabDev/awa_key_checker/raw/main/awa_key_checker.user.js
+// @grant        none
+// ==/UserScript==
+
 /*
-Paste the total contents of this file into your browser console (F12 or Ctrl + Shift + J)
+Press (Ctrl + Shift + J)
 when you are on an Alienware Arena giveaway page.
 
 Will show available key amount, level requirement and restrictions to certain countries.
 
-Updated: March 20, 2021
+Updated: February 2, 2022
 */
 
 var country_with_keys = [];
