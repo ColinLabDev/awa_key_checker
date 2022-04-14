@@ -1,3 +1,9 @@
+# AWA Key Checker
+
+Tell you the current amount of keys, tier requirements and restrictions for Alienware giveaways. Give it a look to see some information on offers, and to see if keys are available in your region.
+
+Press (F12 or Ctrl + Shift + J) when you are on an Alienware Arena giveaway page.
+
 ## Instruction
 
 #### Step 1: ScriptManager
