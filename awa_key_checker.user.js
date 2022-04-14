@@ -1,21 +1,24 @@
 // ==UserScript==
 // @name         AWA Key Checker
-// @version      1.1
-// @description  Checks key availability, level and countries on Alienware Arena
+// @namespace    https://github.com/Saulios
+// @version      1.2
 // @author       Saulios
-// @match        https://*.alienwarearena.com/ucf/show/*/boards/*/Giveaway/*
+// @description  Checks key availability, level and countries on Alienware Arena
 // @icon         https://na.alienwarearena.com/favicon.ico
 // @updateURL    https://github.com/ColinLabDev/awa_key_checker/raw/main/awa_key_checker.user.js
+// @downloadURL  https://github.com/ColinLabDev/awa_key_checker/raw/main/awa_key_checker.user.js
+// @supportURL   https://github.com/Saulios/awa_key_checker/issues
+// @match        https://*.alienwarearena.com/ucf/show/*/boards/*/Giveaway/*
 // @grant        none
 // ==/UserScript==
 
 /*
-Press (Ctrl + Shift + J)
+Paste the total contents of this file into your browser console (F12 or Ctrl + Shift + J)
 when you are on an Alienware Arena giveaway page.
 
-Will show available key amount, level requirement and restrictions to certain countries.
+Will show available key amount, tier requirement and restrictions to certain countries.
 
-Updated: March 10, 2022
+Updated: April 15, 2022
 */
 
 var country_with_keys = [];
@@ -556,7 +559,7 @@ var countries = new function () {
 for (var country in countryKeys) {
 	var get_country = countries.getEntry(country);
 	var get_country_name = get_country.name
-	if (countryKeys[country]["normal"].length === 0 && countryKeys[country]["prestige"].length === 0) {
+	if (countryKeys[country].length === 0) {
 		country_without_keys.push(" " + get_country_name);
 	} else {
 		country_with_keys.push(" " + get_country_name);
@@ -580,23 +583,13 @@ if (country_without_keys.length !== 0 && country_with_keys.length !== 0) {
 	console.log("%cEvery country has keys available!", 'color: green; font-weight: bold; font-size: 14px');
 }
 for (var country in countryKeys) {
-	if (countryKeys[country]["normal"].length === 0 && countryKeys[country]["prestige"].length === 0) {
+	if (countryKeys[country].length === 0) {
 		continue
 	};
-	for (var level in countryKeys[country]["normal"]) {
+	for (var level in countryKeys[country]) {
 		console.log("\n");
 		console.log("%cKey Availability:", 'font-weight: bold; font-size: 14px');
-		console.log("Level: " + level + " - Keys: " + countryKeys[country]["normal"][level]);
-		for (var level in countryKeys[country]["prestige"]) {
-			console.log("Level: 30 - Keys: " + countryKeys[country]["prestige"][level]);
-		};
-	};
-	if (countryKeys[country]["normal"].length === 0 && countryKeys[country]["prestige"].length !== 0) {
-		for (var level in countryKeys[country]["prestige"]) {
-			console.log("\n");
-			console.log("%cKey Availability:", 'font-weight: bold; font-size: 14px');
-			console.log("Level: 30 - Keys: " + countryKeys[country]["prestige"][level]);
-		};
+		console.log("Tier: " + level + " - Keys: " + countryKeys[country][level]);
 	};
 	break
 };
